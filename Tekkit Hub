@@ -2,7 +2,7 @@
 if game:IsLoaded() then
     print("Game is already loaded, executing script.")
 else
-    wait(4)
+    wait(3.5)
 end
 
 -- Gui to Lua
