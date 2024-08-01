@@ -2,7 +2,7 @@
 if game:IsLoaded() then
     print("Game is already loaded, executing script.")
 else
-    wait(3.5)
+    wait(4)
 end
 
 -- Gui to Lua
@@ -31,9 +31,6 @@ local escapetoggle = Instance.new("ImageButton")
 local antiinjury = Instance.new("Frame")
 local injurytext = Instance.new("TextLabel")
 local injurytoggle = Instance.new("ImageButton")
-local raid = Instance.new("Frame")
-local raidText = Instance.new("TextLabel")
-local raidtoggle = Instance.new("ImageButton")
 local bladerefill = Instance.new("Frame")
 local bladetext = Instance.new("TextLabel")
 local bladetoggle = Instance.new("ImageButton")
@@ -53,6 +50,14 @@ local disabledWarning = Instance.new("TextLabel")
 local close = Instance.new("TextButton")
 local shadowButton = Instance.new("TextButton")
 local shadowdescription = Instance.new("TextLabel")
+local raidButton = Instance.new("TextButton")
+local raidFrame = Instance.new("ScrollingFrame")
+local raid = Instance.new("Frame")
+local raidText = Instance.new("TextLabel")
+local raidtoggle = Instance.new("ImageButton")
+local raid2 = Instance.new("Frame")
+local raidText2 = Instance.new("TextLabel")
+local raidtoggle2 = Instance.new("ImageButton")
 local open = Instance.new("ScreenGui")
 local openFrame = Instance.new("Frame")
 local open_2 = Instance.new("TextButton")
@@ -232,7 +237,7 @@ grabescape.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 grabescape.BackgroundTransparency = 1.000
 grabescape.BorderColor3 = Color3.fromRGB(0, 0, 0)
 grabescape.BorderSizePixel = 0
-grabescape.Position = UDim2.new(0.0469999984, 0, 0.280000001, 0)
+grabescape.Position = UDim2.new(0.0469999984, 0, 0.215000004, 0)
 grabescape.Size = UDim2.new(0.917999983, 0, 0.0700000003, 0)
 
 grabescape_2.Name = "grabescape"
@@ -266,7 +271,7 @@ antiinjury.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 antiinjury.BackgroundTransparency = 1.000
 antiinjury.BorderColor3 = Color3.fromRGB(0, 0, 0)
 antiinjury.BorderSizePixel = 0
-antiinjury.Position = UDim2.new(0.0469999984, 0, 0.379999995, 0)
+antiinjury.Position = UDim2.new(0.0469999984, 0, 0.300000012, 0)
 antiinjury.Size = UDim2.new(0.917999983, 0, 0.0700000003, 0)
 
 injurytext.Name = "injurytext"
@@ -294,47 +299,13 @@ injurytoggle.Position = UDim2.new(0.776480615, 0, -0.565999985, 0)
 injurytoggle.Size = UDim2.new(0.109999999, 0, 0.479999989, 0)
 injurytoggle.ImageColor3 = Color3.fromRGB(0, 255, 0)
 
-raid.Name = "raid"
-raid.Parent = combatframe
-raid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-raid.BackgroundTransparency = 1.000
-raid.BorderColor3 = Color3.fromRGB(0, 0, 0)
-raid.BorderSizePixel = 0
-raid.Position = UDim2.new(0.0471820533, 0, 0.219999999, 0)
-raid.Size = UDim2.new(0.917761326, 0, 0.0700000003, 0)
-
-raidText.Name = "raidText"
-raidText.Parent = raid
-raidText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-raidText.BackgroundTransparency = 0.950
-raidText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-raidText.BorderSizePixel = 0
-raidText.Position = UDim2.new(0.0267699864, 0, -0.38499999, 0)
-raidText.Size = UDim2.new(0.5, 0, 0.5, 0)
-raidText.Font = Enum.Font.DenkOne
-raidText.Text = "Eren Weakpoint Extension"
-raidText.TextColor3 = Color3.fromRGB(255, 255, 255)
-raidText.TextScaled = true
-raidText.TextSize = 28.000
-raidText.TextStrokeTransparency = 0.000
-raidText.TextWrapped = true
-
-raidtoggle.Name = "raidtoggle"
-raidtoggle.Parent = raid
-raidtoggle.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
-raidtoggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-raidtoggle.BorderSizePixel = 0
-raidtoggle.Position = UDim2.new(0.776480675, 0, -0.38499999, 0)
-raidtoggle.Size = UDim2.new(0.109999999, 0, 0.479999989, 0)
-raidtoggle.ImageColor3 = Color3.fromRGB(0, 255, 0)
-
 bladerefill.Name = "bladerefill"
 bladerefill.Parent = combatframe
 bladerefill.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 bladerefill.BackgroundTransparency = 1.000
 bladerefill.BorderColor3 = Color3.fromRGB(0, 0, 0)
 bladerefill.BorderSizePixel = 0
-bladerefill.Position = UDim2.new(0.0469999984, 0, 0.335000008, 0)
+bladerefill.Position = UDim2.new(0.0469999984, 0, 0.25999999, 0)
 bladerefill.Size = UDim2.new(0.917999983, 0, 0.0700000003, 0)
 
 bladetext.Name = "bladetext"
@@ -371,7 +342,7 @@ combatButton.BorderSizePixel = 0
 combatButton.Position = UDim2.new(0.0283344295, 0, 0.194351241, 0)
 combatButton.Size = UDim2.new(0.200000003, 0, 0.0799999982, 0)
 combatButton.Font = Enum.Font.Bangers
-combatButton.Text = "Combat"
+combatButton.Text = "Mission"
 combatButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 combatButton.TextScaled = true
 combatButton.TextSize = 35.000
@@ -385,7 +356,7 @@ familyButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 familyButton.BackgroundTransparency = 0.950
 familyButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 familyButton.BorderSizePixel = 0
-familyButton.Position = UDim2.new(0.0283344295, 0, 0.300000012, 0)
+familyButton.Position = UDim2.new(0.0280000009, 0, 0.400000006, 0)
 familyButton.Size = UDim2.new(0.200000003, 0, 0.0799999982, 0)
 familyButton.Font = Enum.Font.Bangers
 familyButton.Text = "Family"
@@ -577,10 +548,108 @@ shadowdescription.TextSize = 14.000
 shadowdescription.TextTransparency = 0.270
 shadowdescription.TextWrapped = true
 
+raidButton.Name = "raidButton"
+raidButton.Parent = main
+raidButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+raidButton.BackgroundTransparency = 0.950
+raidButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+raidButton.BorderSizePixel = 0
+raidButton.Position = UDim2.new(0.0283344295, 0, 0.300000012, 0)
+raidButton.Size = UDim2.new(0.200000003, 0, 0.0799999982, 0)
+raidButton.Font = Enum.Font.Bangers
+raidButton.Text = "Raid"
+raidButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+raidButton.TextScaled = true
+raidButton.TextSize = 35.000
+raidButton.TextStrokeTransparency = 0.000
+raidButton.TextTransparency = 0.270
+raidButton.TextWrapped = true
+
+raidFrame.Name = "raidFrame"
+raidFrame.Parent = main
+raidFrame.Active = true
+raidFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+raidFrame.BackgroundTransparency = 1.000
+raidFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+raidFrame.BorderSizePixel = 0
+raidFrame.Position = UDim2.new(0.276640505, 0, 0.180000007, 0)
+raidFrame.Size = UDim2.new(0.649999976, 0, 0.800000012, 0)
+raidFrame.Visible = false
+raidFrame.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
+raidFrame.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
+
+raid.Name = "raid"
+raid.Parent = raidFrame
+raid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+raid.BackgroundTransparency = 1.000
+raid.BorderColor3 = Color3.fromRGB(0, 0, 0)
+raid.BorderSizePixel = 0
+raid.Position = UDim2.new(0.0471820533, 0, 0.0299999993, 0)
+raid.Size = UDim2.new(0.917761326, 0, 0.0700000003, 0)
+
+raidText.Name = "raidText"
+raidText.Parent = raid
+raidText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+raidText.BackgroundTransparency = 0.950
+raidText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+raidText.BorderSizePixel = 0
+raidText.Position = UDim2.new(0.00996376015, 0, -0.204168126, 0)
+raidText.Size = UDim2.new(0.554619908, 0, 0.662748754, 0)
+raidText.Font = Enum.Font.DenkOne
+raidText.Text = "Eren Weakpoint Extension"
+raidText.TextColor3 = Color3.fromRGB(255, 255, 255)
+raidText.TextScaled = true
+raidText.TextSize = 28.000
+raidText.TextStrokeTransparency = 0.000
+raidText.TextWrapped = true
+
+raidtoggle.Name = "raidtoggle"
+raidtoggle.Parent = raid
+raidtoggle.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+raidtoggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+raidtoggle.BorderSizePixel = 0
+raidtoggle.Position = UDim2.new(0.755472958, 0, -0.0956690237, 0)
+raidtoggle.Size = UDim2.new(0.109999999, 0, 0.479999989, 0)
+raidtoggle.ImageColor3 = Color3.fromRGB(0, 255, 0)
+
+raid2.Name = "raid2"
+raid2.Parent = raidFrame
+raid2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+raid2.BackgroundTransparency = 1.000
+raid2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+raid2.BorderSizePixel = 0
+raid2.Position = UDim2.new(0.0471820533, 0, 0.0799999982, 0)
+raid2.Size = UDim2.new(0.917761326, 0, 0.0700000003, 0)
+
+raidText2.Name = "raidText2"
+raidText2.Parent = raid2
+raidText2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+raidText2.BackgroundTransparency = 0.950
+raidText2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+raidText2.BorderSizePixel = 0
+raidText2.Position = UDim2.new(0.00996376015, 0, -0.204168126, 0)
+raidText2.Size = UDim2.new(0.554619908, 0, 0.662748754, 0)
+raidText2.Font = Enum.Font.DenkOne
+raidText2.Text = "Eren Nape Extension"
+raidText2.TextColor3 = Color3.fromRGB(255, 255, 255)
+raidText2.TextScaled = true
+raidText2.TextSize = 28.000
+raidText2.TextStrokeTransparency = 0.000
+raidText2.TextWrapped = true
+
+raidtoggle2.Name = "raidtoggle2"
+raidtoggle2.Parent = raid2
+raidtoggle2.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+raidtoggle2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+raidtoggle2.BorderSizePixel = 0
+raidtoggle2.Position = UDim2.new(0.755472958, 0, -0.0956690237, 0)
+raidtoggle2.Size = UDim2.new(0.109999999, 0, 0.479999989, 0)
+raidtoggle2.ImageColor3 = Color3.fromRGB(0, 255, 0)
+
 open.Name = "open"
 open.Parent = Tekkit
-open.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 open.Enabled = false
+open.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 openFrame.Name = "openFrame"
 openFrame.Parent = open
@@ -608,7 +677,7 @@ open_2.TextWrapped = true
 
 -- Scripts:
 
-local function RFEXXSP_fake_script() -- main.tabSwap 
+local function NHKXPI_fake_script() -- main.tabSwap 
 	local script = Instance.new('LocalScript', main)
 
 	local main = script.Parent
@@ -616,19 +685,28 @@ local function RFEXXSP_fake_script() -- main.tabSwap
 	local familyframe = main.familyframe
 	local cbutton = main.combatButton
 	local fbutton = main.familyButton
-	
+	local rbutton = main.raidButton
+	local raidFrame = main.raidFrame
 	cbutton.Activated:Connect(function()
 		combatframe.Visible = true
 		familyframe.Visible = false
+		raidFrame.Visible = false
 	end)
 	
 	fbutton.Activated:Connect(function()
 		combatframe.Visible = false
+		raidFrame.Visible = false
 		familyframe.Visible = true
 	end)
+	
+	rbutton.Activated:Connect(function()
+		combatframe.Visible = false
+		familyframe.Visible = false
+		raidFrame.Visible = true
+	end)
 end
-coroutine.wrap(RFEXXSP_fake_script)()
-local function ZPXHNHM_fake_script() -- close.closeGUI 
+coroutine.wrap(NHKXPI_fake_script)()
+local function YVXG_fake_script() -- close.closeGUI 
 	local script = Instance.new('LocalScript', close)
 
 	local closebutton = script.Parent
@@ -640,8 +718,8 @@ local function ZPXHNHM_fake_script() -- close.closeGUI
 		print("GUI disabled")
 	end)
 end
-coroutine.wrap(ZPXHNHM_fake_script)()
-local function LWQPIZA_fake_script() -- open_2.openGUI 
+coroutine.wrap(YVXG_fake_script)()
+local function OCGNZG_fake_script() -- open_2.openGUI 
 	local script = Instance.new('LocalScript', open_2)
 
 	local button = script.Parent
@@ -653,15 +731,25 @@ local function LWQPIZA_fake_script() -- open_2.openGUI
 		print("GUI enabled")
 	end)
 end
-coroutine.wrap(LWQPIZA_fake_script)()
+coroutine.wrap(OCGNZG_fake_script)()
 
 shadowButton.Activated:Connect(function()
-    local function sendNotification(title, text, duration) game.StarterGui:SetCore("SendNotification", { Title = title; Text = text; Duration = duration; }) end
-    print((function() for key in pairs(game:GetService("ReplicatedStorage").Assets.Remotes.GET:InvokeServer("Data", "Get")) do if key:lower():match("blacklist") and key ~= 'Is_Blacklisted' and key ~= 'Is_Blacklisted_NEW' then return sendNotification("Result", "You are shadow banned :(", 5) end end return sendNotification("Result", "You are safe :)", 5) end)())
+    local function sendNotification(title, text, duration)
+        game.StarterGui:SetCore("SendNotification", {
+            Title = title,
+            Text = text,
+            Duration = duration
+        })
+    end
+    print((function()
+        for key in pairs(game:GetService("ReplicatedStorage").Assets.Remotes.GET:InvokeServer("Data", "Get")) do
+            if key:lower():match("blacklist") and key ~= 'Is_Blacklisted' and key ~= 'Is_Blacklisted_NEW' then
+                return sendNotification("Result", "You are shadow banned :(", 5)
+            end
+        end
+        return sendNotification("Result", "You are safe :)", 5)
+    end)())
 end)
-
-
-
 
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
@@ -678,9 +766,6 @@ local playername = LocalPlayer.Name
 local playerModel = Workspace.Characters:FindFirstChild(playername)
 local injuryFolder = playerModel:FindFirstChild("Injuries")
 
-
-
-
 local function makeGUI()
     GUI.Enabled = not GUI.Enabled
     print("GUI toggled")
@@ -693,48 +778,45 @@ UserInputService.InputBegan:Connect(function(input)
     end
 end)
 
-
-
 local function Drag()
-	if Holding == false then MoveCon:Disconnect(); return end
-	local distanceMovedX = InitialX - Mouse.X
-	local distanceMovedY = InitialY - Mouse.Y
+    if Holding == false then
+        MoveCon:Disconnect();
+        return
+    end
+    local distanceMovedX = InitialX - Mouse.X
+    local distanceMovedY = InitialY - Mouse.Y
 
-	main.Position = UIInitialPos - UDim2.new(0, distanceMovedX, 0, distanceMovedY)
+    main.Position = UIInitialPos - UDim2.new(0, distanceMovedX, 0, distanceMovedY)
 end
 
-
 title.MouseEnter:Connect(function()
-	Hovered = true
+    Hovered = true
 end)
 
 title.MouseLeave:Connect(function()
-	Hovered = false
+    Hovered = false
 end)
 
 UserInputService.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-		Holding = Hovered
-		if Holding then
-			InitialX, InitialY = Mouse.X, Mouse.Y
-			UIInitialPos = main.Position
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        Holding = Hovered
+        if Holding then
+            InitialX, InitialY = Mouse.X, Mouse.Y
+            UIInitialPos = main.Position
 
-			MoveCon = Mouse.Move:Connect(Drag)
-		end
-	end
+            MoveCon = Mouse.Move:Connect(Drag)
+        end
+    end
 end)
 
 UserInputService.InputEnded:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-		Holding = false
-	end
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        Holding = false
+    end
 end)
 
-
-
-
- local titansfolder = Workspace:WaitForChild("Titans") -- Ensure the Titans folder exists
- local originalNapeProperties = {} -- Table to store original properties of nape parts
+local titansfolder = Workspace:WaitForChild("Titans") -- Ensure the Titans folder exists
+local originalNapeProperties = {} -- Table to store original properties of nape parts
 if not titansfolder then
     warn("Titans folder not found in workspace")
 end
@@ -753,6 +835,7 @@ local originalPositions = {}
 local originalTransparencies = {}
 local modificationsEnabled = false
 local antiinjury = false
+local erenNapeExtend = false
 
 -- Function to save variables to a file
 function saveVariables(basePath, variables)
@@ -835,6 +918,7 @@ extendMulti = loadedVariables.extendMulti ~= nil and loadedVariables.extendMulti
 visibilityEnabled = loadedVariables.visibilityEnabled ~= nil and loadedVariables.visibilityEnabled or visibilityEnabled
 modificationsEnabled = loadedVariables.modificationsEnabled ~= nil and loadedVariables.modificationsEnabled or modificationsEnabled
 antiinjury = loadedVariables.antiinjury ~= nil and loadedVariables.antiinjury or antiinjury
+erenNapeExtend = loadedVariables.erenNapeExtend ~= nil and loadedVariables.erenNapeExtend or erenNapeExtend
 
 -- Function to print all loaded variables
 function printLoadedVariables(variables)
@@ -854,7 +938,8 @@ local function saveAllVariables()
         extendMulti = extendMulti,
         visibilityEnabled = visibilityEnabled,
         modificationsEnabled = modificationsEnabled,
-        antiinjury = antiinjury
+        antiinjury = antiinjury,
+        erenNapeExtend = erenNapeExtend
     }
     saveVariables(basePath, variablesToSave)
 end
@@ -910,6 +995,12 @@ else
     extendertoggle.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 end
 
+if erenNapeExtend then
+    raidtoggle2.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+else
+    raidtoggle2.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+end
+
 if injuryFolder then
     for _, part in pairs(injuryFolder:GetChildren()) do
         print("Removed current injuries")
@@ -918,7 +1009,7 @@ if injuryFolder then
 else
     print("Injury location not found")
 end
- 
+
 injuryFolder.ChildAdded:Connect(function(child)
     wait(1)
     if antiinjury == true then
@@ -943,77 +1034,75 @@ injurytoggle.Activated:Connect(function()
 end)
 
 local nape
- -- Function to store the original properties and modify the "Nape" parts
- local function storeAndModifyNapes()
-     for _, titan in ipairs(titansfolder:GetChildren()) do
-         if titan:IsA("Model") and titan.Name ~= "Attack_Titan" then
-             local hitboxes = titan:FindFirstChild("Hitboxes")
-             if hitboxes then
-                 local hit = hitboxes:FindFirstChild("Hit")
-                 if hit then
-                     nape = hit:FindFirstChild("Nape")
-                     if nape and nape:IsA("BasePart") then
-                         -- Store original properties and initial state
-                         originalNapeProperties[nape] = {
-                             Size = nape.Size,
-                             Color = nape.Color,
-                             Transparency = nape.Transparency,
-                             Material = nape.Material,
-                             IsModified = false -- Add a state tracker
-                         }
-                     end
-                 end
-             end
-         end
-     end
- end
- 
- local function toggleNapeModifications()
-     for nape, originalProperties in pairs(originalNapeProperties) do
-         if nape and nape.Parent then
+-- Function to store the original properties and modify the "Nape" parts
+local function storeAndModifyNapes()
+    for _, titan in ipairs(titansfolder:GetChildren()) do
+        if titan:IsA("Model") and titan.Name ~= "Attack_Titan" then
+            local hitboxes = titan:FindFirstChild("Hitboxes")
+            if hitboxes then
+                local hit = hitboxes:FindFirstChild("Hit")
+                if hit then
+                    nape = hit:FindFirstChild("Nape")
+                    if nape and nape:IsA("BasePart") then
+                        -- Store original properties and initial state
+                        originalNapeProperties[nape] = {
+                            Size = nape.Size,
+                            Color = nape.Color,
+                            Transparency = nape.Transparency,
+                            Material = nape.Material,
+                            IsModified = false -- Add a state tracker
+                        }
+                    end
+                end
+            end
+        end
+    end
+end
 
+local function toggleNapeModifications()
+    for nape, originalProperties in pairs(originalNapeProperties) do
+        if nape and nape.Parent then
             if visibilityEnabled == true or visibilityEnabled == false then
                 nape.Transparency = napeTrans
-             end
+            end
 
-             if extendEnabled then
-                 -- Switch to modified properties
-                 nape.Size = Vector3.new(80, 80, 80) * extendMulti -- Adjust size as needed
-                 nape.Transparency = napeTrans
-                 nape.Color = Color3.new(1, 1, 1)
-                 nape.Material = Enum.Material.Neon
-                 nape.CanCollide = false
-                 nape.Anchored = false
-                 originalProperties.IsModified = true
-                 print("Napes Extended")
-             else
-                 -- Switch back to original properties
-                 nape.Size = originalProperties.Size
-                 nape.Color = originalProperties.Color
-                 nape.Transparency = originalProperties.Transparency
-                 nape.Material = originalProperties.Material
-                 originalProperties.IsModified = false
-                 print("Napes returned to original values")
-             end
-         end
-     end
- end
- 
- local function updateNapeSize()
-     for nape, originalProperties in pairs(originalNapeProperties) do
-         if nape and nape.Parent and originalProperties.IsModified then
-             nape.Size = Vector3.new(80, 80, 80) * extendMulti -- Adjust size based on extendMulti
-         end
-     end
- end
+            if extendEnabled then
+                -- Switch to modified properties
+                nape.Size = Vector3.new(80, 80, 80) * extendMulti -- Adjust size as needed
+                nape.Transparency = napeTrans
+                nape.Color = Color3.new(1, 1, 1)
+                nape.Material = Enum.Material.Neon
+                nape.CanCollide = false
+                nape.Anchored = false
+                originalProperties.IsModified = true
+                print("Napes Extended")
+            else
+                -- Switch back to original properties
+                nape.Size = originalProperties.Size
+                nape.Color = originalProperties.Color
+                nape.Transparency = originalProperties.Transparency
+                nape.Material = originalProperties.Material
+                originalProperties.IsModified = false
+                print("Napes returned to original values")
+            end
+        end
+    end
+end
 
- 
- -- Store and modify the nape properties initially
- storeAndModifyNapes()
-  -- Apply initial modifications based on extendEnabled and extendMulti
- toggleNapeModifications()
+local function updateNapeSize()
+    for nape, originalProperties in pairs(originalNapeProperties) do
+        if nape and nape.Parent and originalProperties.IsModified then
+            nape.Size = Vector3.new(80, 80, 80) * extendMulti -- Adjust size based on extendMulti
+        end
+    end
+end
 
- multi.FocusLost:Connect(function(enterPressed)
+-- Store and modify the nape properties initially
+storeAndModifyNapes()
+-- Apply initial modifications based on extendEnabled and extendMulti
+toggleNapeModifications()
+
+multi.FocusLost:Connect(function(enterPressed)
     local input = tonumber(multi.Text)
     if input and input >= 0 and input <= 2 then
         extendMulti = input
@@ -1026,10 +1115,7 @@ local nape
     end
 end)
 
-
-
-
- extendertoggle.Activated:Connect(function()
+extendertoggle.Activated:Connect(function()
     extendEnabled = not extendEnabled -- Toggle extendEnabled
     toggleNapeModifications() -- Apply modifications based on extendEnabled and extendMulti
     if extendertoggle.BackgroundColor3 == Color3.fromRGB(170, 0, 0) then
@@ -1039,20 +1125,15 @@ end)
     end
 
     saveAllVariables()
- end)
+end)
 
-
-
-
---ESP
---ESP
---ESP
+-- ESP
+-- ESP
+-- ESP
 -- Table of specific children names to add BoxHandleAdornment
-local specificChildren = {
-    "LeftHand", "UpperTorso", "RightUpperLeg", "RightLowerArm", "RightHand", "RightFoot",
-    "LowerTorso", "RightUpperArm", "RightLowerLeg", "LeftLowerLeg", "LeftUpperLeg",
-    "LeftUpperArm", "LeftLowerArm", "Head", "LeftFoot"
-}
+local specificChildren = {"LeftHand", "UpperTorso", "RightUpperLeg", "RightLowerArm", "RightHand", "RightFoot",
+                          "LowerTorso", "RightUpperArm", "RightLowerLeg", "LeftLowerLeg", "LeftUpperLeg",
+                          "LeftUpperArm", "LeftLowerArm", "Head", "LeftFoot"}
 
 -- Function to create or recreate a BoxHandleAdornment ESP part for specific children
 local function createOrUpdateBoxHandleESP(fakeModel, color)
@@ -1063,7 +1144,7 @@ local function createOrUpdateBoxHandleESP(fakeModel, color)
             if existingBoxHandle then
                 existingBoxHandle:Destroy()
             end
-            
+
             local boxHandle = Instance.new("BoxHandleAdornment")
             boxHandle.Adornee = part
             boxHandle.Size = part.Size
@@ -1143,13 +1224,13 @@ end
 
 local function toggleESP()
     ESPEnabled = not ESPEnabled
-    
+
     -- Destroy all existing highlights
     for _, highlight in ipairs(espParts) do
         highlight:Destroy()
     end
-    espParts = {}  -- Clear the table
-    
+    espParts = {} -- Clear the table
+
     if ESPEnabled then
         highlightModelsInTitansFolder()
         headerEnable()
@@ -1177,8 +1258,7 @@ esptoggle.Activated:Connect(function()
     toggleESP()
 end)
 
-
---AUTO ESCAPE GRAB
+-- AUTO ESCAPE GRAB
 local buttons = LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("Interface"):WaitForChild("Buttons")
 local firstPress = true
 local resetTimer = 2.5
@@ -1188,12 +1268,12 @@ local debounceTime = 0.47
 
 local function sendKeyPress(keyCode)
     if firstPress then
-        wait(debounceTime)  -- Longer wait time for the first key press
+        wait(debounceTime) -- Longer wait time for the first key press
         firstPress = false
     end
     print("Sending key press:", keyCode.Name)
     VirtualInputManager:SendKeyEvent(true, keyCode, false, game) -- Key down
-    wait(0.1)  -- Shorter wait time
+    wait(0.1) -- Shorter wait time
     VirtualInputManager:SendKeyEvent(false, keyCode, false, game) -- Key up
     print("Key press sent:", keyCode.Name)
 end
@@ -1209,19 +1289,19 @@ end
 
 local function onChildAdded(child)
     if grabEnabled then
-        lastChildAddedTime = tick()  -- Update the last child added time
+        lastChildAddedTime = tick() -- Update the last child added time
         print("Child added:", child.Name)
         local key = child.Name
         local keyCode
 
         if key == "A" then
-            keyCode = Enum.KeyCode.A  -- 'A'
+            keyCode = Enum.KeyCode.A -- 'A'
         elseif key == "W" then
-            keyCode = Enum.KeyCode.W  -- 'W'
+            keyCode = Enum.KeyCode.W -- 'W'
         elseif key == "D" then
-            keyCode = Enum.KeyCode.D  -- 'D'
+            keyCode = Enum.KeyCode.D -- 'D'
         elseif key == "S" then
-            keyCode = Enum.KeyCode.S  -- 'S'
+            keyCode = Enum.KeyCode.S -- 'S'
         else
             warn("Unexpected child added to buttons folder")
             return
@@ -1244,7 +1324,7 @@ escapetoggle.Activated:Connect(function()
     grabEnabled = not grabEnabled
     if grabEnabled then
         print("Auto Escape enabled")
-        firstPress = true  -- Reset the flag when Auto Escape is enabled
+        firstPress = true -- Reset the flag when Auto Escape is enabled
     else
         print("Auto Escape disabled")
     end
@@ -1257,7 +1337,6 @@ escapetoggle.Activated:Connect(function()
 
     saveAllVariables()
 end)
-
 
 titansfolder.ChildAdded:Connect(function(ChildAdded)
     highlightModelsInTitansFolder()
@@ -1297,7 +1376,7 @@ titansfolder.ChildAdded:Connect(function(ChildAdded)
     end
 end)
 
---auto blade refill
+-- auto blade refill
 local player = game.Players.LocalPlayer
 local playername = player.Name
 local playermodel = game.Workspace.Characters:WaitForChild(playername)
@@ -1316,7 +1395,7 @@ print("Is PC:", pc)
 -- Function to simulate a key press
 local function simulateKeyPress(key)
     VirtualInputManager:SendKeyEvent(true, key, false, game)
-    wait(0.1)  -- Brief pause to ensure the key press is registered
+    wait(0.1) -- Brief pause to ensure the key press is registered
     VirtualInputManager:SendKeyEvent(false, key, false, game)
 end
 
@@ -1439,6 +1518,33 @@ local function onAdorneeChanged()
     end
 end
 
+local function extendErenNape()
+    local eren = titansfolder:FindFirstChild("Attack_Titan")
+    if eren then
+        local nape = eren:FindFirstChild("Hitboxes"):FindFirstChild("Hit"):FindFirstChild("Nape")
+        if nape then
+            if erenNapeExtend then
+                nape.Size = Vector3.new(80, 80, 80)
+                nape.Transparency = 0.95
+            else   
+                nape.Size = Vector3.new(3, 3, 3)
+                nape.Transparency = 1
+            end
+        else
+            print("Nape was not found")
+        end
+    else
+        print("Attack_Titan not found.")
+    end
+
+    if partToExtend then
+        partToExtend.Size = originalSizes[partToExtend].Size
+        partToExtend.Transparency = originalSizes[partToExtend].Transparency
+    else
+        print("Weak point was not extended")
+    end
+end
+
 local function defineHitboxes(child)
     if child.Name == "Attack_Titan" then
         debugPrint("Found Attack_Titan: " .. child.Name)
@@ -1454,23 +1560,44 @@ local function defineHitboxes(child)
         debugPrint("Defining hitboxes for " .. child.Name)
 
         -- Store original sizes and transparencies
-        originalSizes[leftleg] = { Size = leftleg.Size, Transparency = leftleg.Transparency }
-        originalSizes[rightleg] = { Size = rightleg.Size, Transparency = rightleg.Transparency }
-        originalSizes[leftarm] = { Size = leftarm.Size, Transparency = leftarm.Transparency }
-        originalSizes[rightarm] = { Size = rightarm.Size, Transparency = rightarm.Transparency }
-        originalSizes[eyes] = { Size = eyes.Size, Transparency = eyes.Transparency }
-        originalSizes[nape] = { Size = nape.Size, Transparency = nape.Transparency }
+        originalSizes[leftleg] = {
+            Size = leftleg.Size,
+            Transparency = leftleg.Transparency
+        }
+        originalSizes[rightleg] = {
+            Size = rightleg.Size,
+            Transparency = rightleg.Transparency
+        }
+        originalSizes[leftarm] = {
+            Size = leftarm.Size,
+            Transparency = leftarm.Transparency
+        }
+        originalSizes[rightarm] = {
+            Size = rightarm.Size,
+            Transparency = rightarm.Transparency
+        }
+        originalSizes[eyes] = {
+            Size = eyes.Size,
+            Transparency = eyes.Transparency
+        }
+        originalSizes[nape] = {
+            Size = nape.Size,
+            Transparency = nape.Transparency
+        }
 
         -- Connect the Adornee change function
         marker:GetPropertyChangedSignal("Adornee"):Connect(onAdorneeChanged)
+        -- Initial call to handle the current Adornee
+        onAdorneeChanged()
+        extendErenNape()
+        wait(0.5)
         leftleg.Color = Color3.new(1, 1, 1)
         rightleg.Color = Color3.new(1, 1, 1)
         leftarm.Color = Color3.new(1, 1, 1)
         rightarm.Color = Color3.new(1, 1, 1)
         eyes.Color = Color3.new(1, 1, 1)
         nape.Color = Color3.new(1, 1, 1)
-        -- Initial call to handle the current Adornee
-        onAdorneeChanged()
+        print("Colors changed")
     else
         debugPrint("Found a non-Attack_Titan: " .. child.Name)
     end
@@ -1478,7 +1605,6 @@ end
 
 -- Function to toggle modifications based on button state
 local function toggleModifications()
-    modificationsEnabled = not modificationsEnabled
     debugPrint("Modifications Enabled: " .. tostring(modificationsEnabled))
     if modificationsEnabled and titansfolder.Attack_Titan then
         -- Apply modifications immediately
@@ -1505,11 +1631,38 @@ titansfolder.ChildAdded:Connect(function(child)
 end)
 
 raidtoggle.Activated:Connect(function()
-    if raidtoggle.BackgroundColor3 == Color3.fromRGB(0, 170, 0) then
-        raidtoggle.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
-    else
+    modificationsEnabled = not modificationsEnabled
+
+    if erenNapeExtend then
+        erenNapeExtend = false
+        extendErenNape()
+    end
+
+    if modificationsEnabled then
         raidtoggle.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+        raidtoggle2.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+    else
+        raidtoggle.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
     end
     toggleModifications()
+    saveAllVariables()
+end)
+
+raidtoggle2.Activated:Connect(function()
+    erenNapeExtend = not erenNapeExtend
+
+    if modificationsEnabled then
+        modificationsEnabled = false
+        onAdorneeChanged()
+    end
+
+    if erenNapeExtend then
+        raidtoggle2.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+        raidtoggle.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+    else
+        raidtoggle2.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+    end
+
+    extendErenNape()
     saveAllVariables()
 end)
