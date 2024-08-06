@@ -2,7 +2,7 @@
 if game:IsLoaded() then
     print("Game is already loaded, executing script.")
 else
-    wait(4)
+    wait(4.5)
 end
 
 -- Gui to Lua
@@ -677,61 +677,35 @@ open_2.TextWrapped = true
 
 -- Scripts:
 
-local function NHKXPI_fake_script() -- main.tabSwap 
-	local script = Instance.new('LocalScript', main)
+combatButton.Activated:Connect(function()
+    combatframe.Visible = true
+    familyframe.Visible = false
+    raidFrame.Visible = false
+end)
 
-	local main = script.Parent
-	local combatframe = main.combatframe
-	local familyframe = main.familyframe
-	local cbutton = main.combatButton
-	local fbutton = main.familyButton
-	local rbutton = main.raidButton
-	local raidFrame = main.raidFrame
-	cbutton.Activated:Connect(function()
-		combatframe.Visible = true
-		familyframe.Visible = false
-		raidFrame.Visible = false
-	end)
-	
-	fbutton.Activated:Connect(function()
-		combatframe.Visible = false
-		raidFrame.Visible = false
-		familyframe.Visible = true
-	end)
-	
-	rbutton.Activated:Connect(function()
-		combatframe.Visible = false
-		familyframe.Visible = false
-		raidFrame.Visible = true
-	end)
-end
-coroutine.wrap(NHKXPI_fake_script)()
-local function YVXG_fake_script() -- close.closeGUI 
-	local script = Instance.new('LocalScript', close)
+familyButton.Activated:Connect(function()
+    combatframe.Visible = false
+    raidFrame.Visible = false
+    familyframe.Visible = true
+end)
 
-	local closebutton = script.Parent
-	local gui = script.Parent.Parent.Parent
-	local opengui = gui.Parent.open
-	closebutton.Activated:Connect(function()
-		gui.Enabled = false
-		opengui.Enabled = true
-		print("GUI disabled")
-	end)
-end
-coroutine.wrap(YVXG_fake_script)()
-local function OCGNZG_fake_script() -- open_2.openGUI 
-	local script = Instance.new('LocalScript', open_2)
+raidButton.Activated:Connect(function()
+    combatframe.Visible = false
+    familyframe.Visible = false
+    raidFrame.Visible = true
+end)
 
-	local button = script.Parent
-	local main = script.Parent.Parent.Parent.Parent.GUI
-	local open = script.Parent.Parent.Parent
-	button.Activated:Connect(function()
-		main.Enabled = true
-		open.Enabled = false
-		print("GUI enabled")
-	end)
-end
-coroutine.wrap(OCGNZG_fake_script)()
+close.Activated:Connect(function()
+    GUI.Enabled = false
+    open.Enabled = true
+    print("GUI disabled")
+end)
+
+open_2.Activated:Connect(function()
+    main.Enabled = true
+    open.Enabled = false
+    print("GUI enabled")
+end)
 
 shadowButton.Activated:Connect(function()
     local function sendNotification(title, text, duration)
