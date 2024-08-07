@@ -702,7 +702,7 @@ close.Activated:Connect(function()
 end)
 
 open_2.Activated:Connect(function()
-    main.Enabled = true
+    GUI.Enabled = true
     open.Enabled = false
     print("GUI enabled")
 end)
