@@ -1,0 +1,46 @@
+if game:IsLoaded() then
+    print("Game is already loaded, executing script.")
+else
+    game.Loaded:Wait()
+end
+
+local GameP = game.PlaceId
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Notification", 
+    Text = "Checking", 
+    Icon = "rbxassetid://13264701341" 
+})
+wait(0.1)
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Notification", 
+    Text = "Check Place Id..", 
+    Icon = "rbxassetid://13264701341"
+})
+wait(0.1)
+
+if game.PlaceId == 13379208636 then  -- AOTR HUB
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Notification", 
+    Text = "Game Support " .. "[" .. GameP .. "]", 
+    Icon = "rbxassetid://13264701341"
+})
+loadstring(game:HttpGet("https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/Tekkit%20Hub"))()
+
+elseif game.PlaceId == 5094651510 then  -- Demon Fall HUB
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Notification", 
+    Text = "Game Support " .. "[" .. GameP .. "]", 
+    Icon = "rbxassetid://13264701341"
+})
+loadstring(game:HttpGet("https://raw.githubusercontent.com/JD-04/Tekkit/main/Demon%20Fall"))()
+
+-- Add other games here as needed
+
+else  -- Not Support
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Notification", 
+    Text = "Game Not Support " .. "[" .. GameP .. "]", 
+    Icon = "rbxassetid://13264701341"
+})
+end
