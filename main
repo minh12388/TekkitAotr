@@ -19,15 +19,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 })
 wait(0.1)
 
-if game.PlaceId == 13379208636 then  -- AOTR HUB
-game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Notification", 
-    Text = "Game Support " .. "[" .. GameP .. "]", 
-    Icon = "rbxassetid://13264701341"
-})
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/Tekkit%20Hub"))()
-
-elseif game.PlaceId == 5094651510 then  -- Demon Fall HUB
+if game.PlaceId == 5094651510 then  -- AOTR HUB
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "Notification", 
     Text = "Game Support " .. "[" .. GameP .. "]", 
@@ -37,10 +29,11 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/JD-04/Tekkit/main/Dem
 
 -- Add other games here as needed
 
-else  -- Not Support
+else
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "Notification", 
-    Text = "Game Not Support " .. "[" .. GameP .. "]", 
+    Text = "Loading Aot:R Hub" .. "[" .. GameP .. "]", 
     Icon = "rbxassetid://13264701341"
 })
+loadstring(game:HttpGet("https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/Tekkit%20Hub"))()
 end
