@@ -1,8 +1,9 @@
 -- Check if the game is already loaded
 if game:IsLoaded() then
-    print("Game is already loaded, executing script.")
+    print("Game loaded, executing script")
 else
-    wait(4.5)
+    print("Game not loaded, waiting for game to load")
+    wait(5)
 end
 
 -- Gui to Lua
@@ -36,20 +37,13 @@ local bladetext = Instance.new("TextLabel")
 local bladetoggle = Instance.new("ImageButton")
 local combatButton = Instance.new("TextButton")
 local familyButton = Instance.new("TextButton")
-local familyframe = Instance.new("ScrollingFrame")
-local epic = Instance.new("Frame")
-local epicText = Instance.new("TextLabel")
-local epictoggle = Instance.new("ImageButton")
-local legendary = Instance.new("Frame")
-local legendaryText = Instance.new("TextLabel")
-local legendarytoggle = Instance.new("ImageButton")
-local mythic = Instance.new("Frame")
-local mythicText = Instance.new("TextLabel")
-local mythictoggle = Instance.new("ImageButton")
-local disabledWarning = Instance.new("TextLabel")
+local riskyframe = Instance.new("ScrollingFrame")
+local farm = Instance.new("Frame")
+local farmText = Instance.new("TextLabel")
+local tpButtonF = Instance.new("ImageButton")
+local warning = Instance.new("TextLabel")
 local close = Instance.new("TextButton")
 local shadowButton = Instance.new("TextButton")
-local shadowdescription = Instance.new("TextLabel")
 local raidButton = Instance.new("TextButton")
 local raidFrame = Instance.new("ScrollingFrame")
 local raid = Instance.new("Frame")
@@ -58,6 +52,7 @@ local raidtoggle = Instance.new("ImageButton")
 local raid2 = Instance.new("Frame")
 local raidText2 = Instance.new("TextLabel")
 local raidtoggle2 = Instance.new("ImageButton")
+local shadowdescription = Instance.new("TextLabel")
 local open = Instance.new("ScreenGui")
 local openFrame = Instance.new("Frame")
 local open_2 = Instance.new("TextButton")
@@ -359,7 +354,7 @@ familyButton.BorderSizePixel = 0
 familyButton.Position = UDim2.new(0.0280000009, 0, 0.400000006, 0)
 familyButton.Size = UDim2.new(0.200000003, 0, 0.0799999982, 0)
 familyButton.Font = Enum.Font.Bangers
-familyButton.Text = "Family"
+familyButton.Text = "Risky"
 familyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 familyButton.TextScaled = true
 familyButton.TextSize = 35.000
@@ -367,136 +362,68 @@ familyButton.TextStrokeTransparency = 0.000
 familyButton.TextTransparency = 0.270
 familyButton.TextWrapped = true
 
-familyframe.Name = "familyframe"
-familyframe.Parent = main
-familyframe.Active = true
-familyframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-familyframe.BackgroundTransparency = 1.000
-familyframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
-familyframe.BorderSizePixel = 0
-familyframe.Position = UDim2.new(0.276640505, 0, 0.180000007, 0)
-familyframe.Size = UDim2.new(0.649999976, 0, 0.800000012, 0)
-familyframe.Visible = false
-familyframe.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
-familyframe.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
+riskyframe.Name = "riskyframe"
+riskyframe.Parent = main
+riskyframe.Active = true
+riskyframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+riskyframe.BackgroundTransparency = 1.000
+riskyframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
+riskyframe.BorderSizePixel = 0
+riskyframe.Position = UDim2.new(0.276640505, 0, 0.180000007, 0)
+riskyframe.Size = UDim2.new(0.649999976, 0, 0.800000012, 0)
+riskyframe.Visible = false
+riskyframe.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
+riskyframe.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
 
-epic.Name = "epic"
-epic.Parent = familyframe
-epic.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-epic.BackgroundTransparency = 1.000
-epic.BorderColor3 = Color3.fromRGB(0, 0, 0)
-epic.BorderSizePixel = 0
-epic.Position = UDim2.new(0.0469999984, 0, 0.0199999996, 0)
-epic.Size = UDim2.new(0.917999983, 0, 0.0700000003, 0)
+farm.Name = "farm"
+farm.Parent = riskyframe
+farm.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+farm.BackgroundTransparency = 1.000
+farm.BorderColor3 = Color3.fromRGB(0, 0, 0)
+farm.BorderSizePixel = 0
+farm.Position = UDim2.new(0.0469999984, 0, 0.100000001, 0)
+farm.Size = UDim2.new(0.917999983, 0, 0.0700000003, 0)
 
-epicText.Name = "epicText"
-epicText.Parent = epic
-epicText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-epicText.BackgroundTransparency = 0.950
-epicText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-epicText.BorderSizePixel = 0
-epicText.Position = UDim2.new(0.0309665091, 0, 0.211424991, 0)
-epicText.Size = UDim2.new(0.600000024, 0, 0.761420369, 0)
-epicText.Font = Enum.Font.DenkOne
-epicText.Text = "Roll until Epic"
-epicText.TextColor3 = Color3.fromRGB(255, 255, 255)
-epicText.TextScaled = true
-epicText.TextSize = 28.000
-epicText.TextStrokeTransparency = 0.000
-epicText.TextWrapped = true
+farmText.Name = "farmText"
+farmText.Parent = farm
+farmText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+farmText.BackgroundTransparency = 0.950
+farmText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+farmText.BorderSizePixel = 0
+farmText.Position = UDim2.new(0.0309665091, 0, 0.211424991, 0)
+farmText.Size = UDim2.new(0.600000024, 0, 0.761420369, 0)
+farmText.Font = Enum.Font.DenkOne
+farmText.Text = "Auto Farmer"
+farmText.TextColor3 = Color3.fromRGB(255, 255, 255)
+farmText.TextScaled = true
+farmText.TextSize = 28.000
+farmText.TextStrokeTransparency = 0.000
+farmText.TextWrapped = true
 
-epictoggle.Name = "epictoggle"
-epictoggle.Parent = epic
-epictoggle.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
-epictoggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-epictoggle.BorderSizePixel = 0
-epictoggle.Position = UDim2.new(0.776480675, 0, 0.300993741, 0)
-epictoggle.Size = UDim2.new(0.109999999, 0, 0.575000107, 0)
-epictoggle.ImageColor3 = Color3.fromRGB(0, 255, 0)
+tpButtonF.Name = "tpButtonF"
+tpButtonF.Parent = farm
+tpButtonF.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+tpButtonF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+tpButtonF.BorderSizePixel = 0
+tpButtonF.Position = UDim2.new(0.776480734, 0, 0.30099383, 0)
+tpButtonF.Size = UDim2.new(0.131002203, 0, 0.575000167, 0)
+tpButtonF.ImageColor3 = Color3.fromRGB(0, 255, 0)
 
-legendary.Name = "legendary"
-legendary.Parent = familyframe
-legendary.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-legendary.BackgroundTransparency = 1.000
-legendary.BorderColor3 = Color3.fromRGB(0, 0, 0)
-legendary.BorderSizePixel = 0
-legendary.Position = UDim2.new(0.0469999984, 0, 0.100000001, 0)
-legendary.Size = UDim2.new(0.917999983, 0, 0.0700000003, 0)
-
-legendaryText.Name = "legendaryText"
-legendaryText.Parent = legendary
-legendaryText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-legendaryText.BackgroundTransparency = 0.950
-legendaryText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-legendaryText.BorderSizePixel = 0
-legendaryText.Position = UDim2.new(0.0309665091, 0, 0.211424991, 0)
-legendaryText.Size = UDim2.new(0.600000024, 0, 0.761420369, 0)
-legendaryText.Font = Enum.Font.DenkOne
-legendaryText.Text = "Roll until Legendary"
-legendaryText.TextColor3 = Color3.fromRGB(255, 255, 255)
-legendaryText.TextScaled = true
-legendaryText.TextSize = 28.000
-legendaryText.TextStrokeTransparency = 0.000
-legendaryText.TextWrapped = true
-
-legendarytoggle.Name = "legendarytoggle"
-legendarytoggle.Parent = legendary
-legendarytoggle.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
-legendarytoggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-legendarytoggle.BorderSizePixel = 0
-legendarytoggle.Position = UDim2.new(0.776480734, 0, 0.30099383, 0)
-legendarytoggle.Size = UDim2.new(0.109999999, 0, 0.574999988, 0)
-legendarytoggle.ImageColor3 = Color3.fromRGB(0, 255, 0)
-
-mythic.Name = "mythic"
-mythic.Parent = familyframe
-mythic.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-mythic.BackgroundTransparency = 1.000
-mythic.BorderColor3 = Color3.fromRGB(0, 0, 0)
-mythic.BorderSizePixel = 0
-mythic.Position = UDim2.new(0.0469999984, 0, 0.180000007, 0)
-mythic.Size = UDim2.new(0.917999983, 0, 0.0700000003, 0)
-
-mythicText.Name = "mythicText"
-mythicText.Parent = mythic
-mythicText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-mythicText.BackgroundTransparency = 0.950
-mythicText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-mythicText.BorderSizePixel = 0
-mythicText.Position = UDim2.new(0.0309665091, 0, 0.211424991, 0)
-mythicText.Size = UDim2.new(0.600000024, 0, 0.761420369, 0)
-mythicText.Font = Enum.Font.DenkOne
-mythicText.Text = "Roll until Mythic"
-mythicText.TextColor3 = Color3.fromRGB(255, 255, 255)
-mythicText.TextScaled = true
-mythicText.TextSize = 28.000
-mythicText.TextStrokeTransparency = 0.000
-mythicText.TextWrapped = true
-
-mythictoggle.Name = "mythictoggle"
-mythictoggle.Parent = mythic
-mythictoggle.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
-mythictoggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-mythictoggle.BorderSizePixel = 0
-mythictoggle.Position = UDim2.new(0.776480734, 0, 0.30099383, 0)
-mythictoggle.Size = UDim2.new(0.109999999, 0, 0.574999988, 0)
-mythictoggle.ImageColor3 = Color3.fromRGB(0, 255, 0)
-
-disabledWarning.Name = "disabledWarning"
-disabledWarning.Parent = familyframe
-disabledWarning.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-disabledWarning.BackgroundTransparency = 0.950
-disabledWarning.BorderColor3 = Color3.fromRGB(0, 0, 0)
-disabledWarning.BorderSizePixel = 0
-disabledWarning.Position = UDim2.new(0.0627046004, 0, 0.27088505, 0)
-disabledWarning.Size = UDim2.new(0.850000024, 0, 0.0799999982, 0)
-disabledWarning.Font = Enum.Font.Unknown
-disabledWarning.Text = "This tab currently does not work, please wait for update."
-disabledWarning.TextColor3 = Color3.fromRGB(255, 255, 255)
-disabledWarning.TextScaled = true
-disabledWarning.TextSize = 14.000
-disabledWarning.TextStrokeTransparency = 0.480
-disabledWarning.TextWrapped = true
+warning.Name = "warning"
+warning.Parent = riskyframe
+warning.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+warning.BackgroundTransparency = 0.950
+warning.BorderColor3 = Color3.fromRGB(0, 0, 0)
+warning.BorderSizePixel = 0
+warning.Position = UDim2.new(0.0627046004, 0, 0.0199999996, 0)
+warning.Size = UDim2.new(0.850000024, 0, 0.0799999982, 0)
+warning.Font = Enum.Font.Unknown
+warning.Text = "These features WILL SHADOW BAN YOU, use at your own risk."
+warning.TextColor3 = Color3.fromRGB(255, 255, 255)
+warning.TextScaled = true
+warning.TextSize = 14.000
+warning.TextStrokeTransparency = 0.480
+warning.TextWrapped = true
 
 close.Name = "close"
 close.Parent = main
@@ -531,22 +458,6 @@ shadowButton.TextSize = 35.000
 shadowButton.TextStrokeTransparency = 0.000
 shadowButton.TextTransparency = 0.270
 shadowButton.TextWrapped = true
-
-shadowdescription.Name = "shadowdescription"
-shadowdescription.Parent = main
-shadowdescription.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-shadowdescription.BackgroundTransparency = 0.950
-shadowdescription.BorderColor3 = Color3.fromRGB(0, 0, 0)
-shadowdescription.BorderSizePixel = 0
-shadowdescription.Position = UDim2.new(0.045726154, 0, 0.682761073, 0)
-shadowdescription.Size = UDim2.new(0.199798539, 0, 0.145227343, 0)
-shadowdescription.Font = Enum.Font.Bangers
-shadowdescription.Text = "(Only use in Lobby, check console [F9])"
-shadowdescription.TextColor3 = Color3.fromRGB(255, 255, 255)
-shadowdescription.TextScaled = true
-shadowdescription.TextSize = 14.000
-shadowdescription.TextTransparency = 0.270
-shadowdescription.TextWrapped = true
 
 raidButton.Name = "raidButton"
 raidButton.Parent = main
@@ -646,6 +557,22 @@ raidtoggle2.Position = UDim2.new(0.755472958, 0, -0.0956690237, 0)
 raidtoggle2.Size = UDim2.new(0.109999999, 0, 0.479999989, 0)
 raidtoggle2.ImageColor3 = Color3.fromRGB(0, 255, 0)
 
+shadowdescription.Name = "shadowdescription"
+shadowdescription.Parent = main
+shadowdescription.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+shadowdescription.BackgroundTransparency = 0.950
+shadowdescription.BorderColor3 = Color3.fromRGB(0, 0, 0)
+shadowdescription.BorderSizePixel = 0
+shadowdescription.Position = UDim2.new(0.045726154, 0, 0.682761073, 0)
+shadowdescription.Size = UDim2.new(0.199798539, 0, 0.145227343, 0)
+shadowdescription.Font = Enum.Font.Bangers
+shadowdescription.Text = "(Only use in Lobby, check console [F9])"
+shadowdescription.TextColor3 = Color3.fromRGB(255, 255, 255)
+shadowdescription.TextScaled = true
+shadowdescription.TextSize = 14.000
+shadowdescription.TextTransparency = 0.270
+shadowdescription.TextWrapped = true
+
 open.Name = "open"
 open.Parent = Tekkit
 open.Enabled = false
@@ -679,19 +606,19 @@ open_2.TextWrapped = true
 
 combatButton.Activated:Connect(function()
     combatframe.Visible = true
-    familyframe.Visible = false
+    riskyframe.Visible = false
     raidFrame.Visible = false
 end)
 
 familyButton.Activated:Connect(function()
     combatframe.Visible = false
     raidFrame.Visible = false
-    familyframe.Visible = true
+    riskyframe.Visible = true
 end)
 
 raidButton.Activated:Connect(function()
     combatframe.Visible = false
-    familyframe.Visible = false
+    riskyframe.Visible = false
     raidFrame.Visible = true
 end)
 
@@ -739,6 +666,9 @@ local InitialX, InitialY, UIInitialPos
 local playername = LocalPlayer.Name
 local playerModel = Workspace.Characters:FindFirstChild(playername)
 local injuryFolder = playerModel:FindFirstChild("Injuries")
+local nape
+local MAX_TELEPORT_DISTANCE2 = math.huge
+
 
 local function makeGUI()
     GUI.Enabled = not GUI.Enabled
@@ -810,7 +740,7 @@ local originalTransparencies = {}
 local modificationsEnabled = false
 local antiinjury = false
 local erenNapeExtend = false
-
+local isTeleportEnabled = false
 -- Function to save variables to a file
 function saveVariables(basePath, variables)
     local filePath = basePath .. "/savedVariables.txt"
@@ -893,6 +823,8 @@ visibilityEnabled = loadedVariables.visibilityEnabled ~= nil and loadedVariables
 modificationsEnabled = loadedVariables.modificationsEnabled ~= nil and loadedVariables.modificationsEnabled or modificationsEnabled
 antiinjury = loadedVariables.antiinjury ~= nil and loadedVariables.antiinjury or antiinjury
 erenNapeExtend = loadedVariables.erenNapeExtend ~= nil and loadedVariables.erenNapeExtend or erenNapeExtend
+isTeleportEnabled = loadedVariables.isTeleportEnabled ~= nil and loadedVariables.isTeleportEnabled or isTeleportEnabled
+
 
 -- Function to print all loaded variables
 function printLoadedVariables(variables)
@@ -913,7 +845,8 @@ local function saveAllVariables()
         visibilityEnabled = visibilityEnabled,
         modificationsEnabled = modificationsEnabled,
         antiinjury = antiinjury,
-        erenNapeExtend = erenNapeExtend
+        erenNapeExtend = erenNapeExtend,
+        isTeleportEnabled = isTeleportEnabled
     }
     saveVariables(basePath, variablesToSave)
 end
@@ -975,6 +908,12 @@ else
     raidtoggle2.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 end
 
+if isTeleportEnabled then
+    tpButtonF.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+else
+    tpButtonF.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+end
+
 if injuryFolder then
     for _, part in pairs(injuryFolder:GetChildren()) do
         print("Removed current injuries")
@@ -983,6 +922,7 @@ if injuryFolder then
 else
     print("Injury location not found")
 end
+
 
 injuryFolder.ChildAdded:Connect(function(child)
     wait(1)
@@ -1640,3 +1580,222 @@ raidtoggle2.Activated:Connect(function()
     extendErenNape()
     saveAllVariables()
 end)
+
+
+-- Function to get the LocalPlayer's HumanoidRootPart location
+local function getLocalPlayerHumanoidRootPartLocation()
+    local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    if humanoidRootPart and humanoidRootPart:IsA("BasePart") then
+        local humanoidRootPartLocation = humanoidRootPart.Position
+        print("HumanoidRootPart Location:", humanoidRootPartLocation)
+        return humanoidRootPartLocation
+    else
+        warn("HumanoidRootPart not found for LocalPlayer.")
+        return nil
+    end
+end
+
+local function findClosestNapeLocation()
+    local titansFolder = Workspace:FindFirstChild("Titans")
+    local closestNapeLocation = nil
+    local shortestDistance = math.huge
+
+    if titansFolder then
+        local playerPosition = getLocalPlayerHumanoidRootPartLocation()
+        for _, model in ipairs(titansFolder:GetChildren()) do
+            if model:IsA("Model") and model:FindFirstChildOfClass("Humanoid") then
+                local hitBoxes = model:FindFirstChild("Hitboxes")
+                if hitBoxes then
+                    local hit = hitBoxes:FindFirstChild("Hit")
+                    if hit then
+                        local napePart = hit:FindFirstChild("Nape")
+                        if napePart then
+                            local distance = (napePart.Position - playerPosition).Magnitude
+                            if distance < shortestDistance and distance <= MAX_TELEPORT_DISTANCE2 then
+                                shortestDistance = distance
+                                closestNapeLocation = napePart
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    else
+        warn("Titans folder not found in Workspace.")
+    end
+
+    if closestNapeLocation then
+        nape = closestNapeLocation
+        print("Closest NapeLocation set to:", nape.Position)
+    else
+        warn("No Nape part found within maximum teleport distance.")
+    end
+
+    return nape
+end
+
+
+
+
+-- Function to start hovering above the Nape
+local function startHoveringAboveNape()
+    if nape then
+        local humanoidRootPart = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            local bodyPosition = Instance.new("BodyPosition")
+            bodyPosition.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+            bodyPosition.Position = nape.Position + Vector3.new(0, 450, 0)
+            bodyPosition.Parent = humanoidRootPart
+
+            local bodyGyro = Instance.new("BodyGyro")
+            bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+            bodyGyro.CFrame = humanoidRootPart.CFrame
+            bodyGyro.Parent = humanoidRootPart
+
+            return bodyPosition, bodyGyro
+        end
+    else
+        warn("Nape not found.")
+        return nil, nil
+    end
+end
+
+-- Function to stop hovering
+local function stopHovering(bodyPosition, bodyGyro)
+    if bodyPosition then
+        bodyPosition:Destroy()
+    end
+    if bodyGyro then
+        bodyGyro:Destroy()
+    end
+end
+
+-- Function to perform consecutive teleports upon releasing the left mouse button
+local function performConsecutiveTeleports()
+    local humanoidRootPart = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        local originalPosition = humanoidRootPart.Position
+
+        local function teleportTo(position)
+            humanoidRootPart.CFrame = CFrame.new(position)
+        end
+
+        local function teleport()
+            findClosestNapeLocation() -- Update NapeLocation
+            if nape then
+                local napePosition = nape.Position
+                local quarterDistance = (napePosition - originalPosition) / 4
+                local threeQuarterDistance = quarterDistance * 3
+
+                for i = 1, 2 do
+                    teleportTo(originalPosition + threeQuarterDistance)
+                    wait(0.001)
+                    teleportTo(napePosition)
+                    teleportTo(napePosition)
+                    teleportTo(napePosition)
+					teleportTo(napePosition)
+                end
+            end
+        end
+
+        teleport()
+    end
+end
+
+-- Function to handle toggling teleportation
+local function toggleTeleportation()
+    tpButtonF.BackgroundColor3 = isTeleportEnabled and Color3.new(0, 1, 0) or Color3.fromRGB(170, 0, 0)
+    if isTeleportEnabled then
+        print("Teleportation Enabled")
+        findClosestNapeLocation()
+        local bodyPosition, bodyGyro = startHoveringAboveNape()
+        
+        -- Keep hovering while teleportation is enabled
+        spawn(function()
+            while isTeleportEnabled do
+                wait(1) -- Cooldown
+                VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
+                wait(0.3)
+                VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
+                findClosestNapeLocation()
+                if bodyPosition and bodyGyro then
+                    bodyPosition.Position = nape.Position + Vector3.new(0, 300, 0)
+                    bodyGyro.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+                end
+            end
+            stopHovering(bodyPosition, bodyGyro)
+        end)
+    else
+        print("Teleportation Disabled")
+    end
+end
+
+if isTeleportEnabled then
+    toggleTeleportation()
+    tpButtonF.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+else
+    tpButtonF.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+end
+
+-- Toggle teleportation when button is clicked
+tpButtonF.MouseButton1Click:Connect(function()
+    isTeleportEnabled = not isTeleportEnabled
+    toggleTeleportation()
+end)
+
+
+-- Connect the function to the UserInputService's InputEnded event
+    UserInputService.InputEnded:Connect(function(input)
+        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and isTeleportEnabled == true then
+            performConsecutiveTeleports()
+        end
+    end)
+
+
+local retryButtonTitle = player.PlayerGui.Interface.Rewards.Main.Info.Main.Buttons.Retry.Title
+
+-- Estimación de la zona donde se encuentra el botón
+local buttonAreaX = retryButtonTitle.AbsolutePosition.X + retryButtonTitle.AbsoluteSize.X / 2
+local buttonAreaYStart = retryButtonTitle.AbsolutePosition.Y - 50  -- Comenzar 50 píxeles más abajo
+local buttonAreaYEnd = buttonAreaYStart + retryButtonTitle.AbsoluteSize.Y + 100 -- Extender el área 100 píxeles hacia abajo
+
+local numClicks = 10 -- Número de clics a realizar
+local clickSpacing = 10 -- Distancia vertical entre clics
+local clickInterval = 3 -- Intervalo entre cada conjunto de clics (en segundos)
+
+-- Función para realizar los clics en el área del botón
+local function clickRetryArea()
+    for i = 1, numClicks do
+        local clickY = buttonAreaYEnd - (i - 1) * clickSpacing -- Empezar desde abajo
+        VirtualInputManager:SendMouseButtonEvent(buttonAreaX, clickY, 0, true, game, 0)
+        VirtualInputManager:SendMouseButtonEvent(buttonAreaX, clickY, 0, false, game, 0)
+        wait(0.1) -- Pequeña pausa entre clics
+    end
+end
+
+-- Función para ejecutar el auto-retry en un hilo separado
+local function autoRetryThread()
+    while wait(clickInterval) do
+        if not string.find(retryButtonTitle.Text, "(0/0)") then  -- Verificar si el texto NO contiene "(0/0)"
+            if isTeleportEnabled then
+                clickRetryArea()
+            end
+
+            -- Esperar a que el texto cambie a "STARTING"
+            while not string.find(retryButtonTitle.Text, "STARTING") do
+                wait()
+                if isTeleportEnabled then
+                    clickRetryArea()
+                end
+            end
+
+            print("Script stopped. Title text changed to STARTING.")
+            break -- Salir del bucle después de que el texto cambie
+        end
+    end
+end
+
+-- Iniciar el hilo del auto-retry (activado por defecto)
+coroutine.wrap(autoRetryThread)()
