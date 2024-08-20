@@ -1,9 +1,8 @@
 -- Check if the game is already loaded
 if game:IsLoaded() then
-    print("Game loaded, executing script")
+    print("Game is already loaded, executing script.")
 else
-    print("Game not loaded, waiting for game to load")
-    wait(5)
+    game.Loaded:wait()
 end
 
 -- Gui to Lua
@@ -1340,6 +1339,38 @@ local function checkBladeStatus()
                 end
             end
         end
+
+        wait(4)
+        if childObject.Transparency == 1 or childObject.Parent == nil then
+            if pc then
+                -- If on PC, simulate pressing the R key
+                simulateKeyPress(Enum.KeyCode.R)
+                print("Blade refill engaged")
+            else
+                -- If on mobile, simulate a touch event on the "Refill" button
+                local refillButton = player.PlayerGui.Interface.Mobile:FindFirstChild("Refill")
+                if refillButton then
+                    simulateTouchEvent(refillButton)
+                    print("Blade refill engaged")
+                end
+            end
+        end
+
+        wait(3)
+        if childObject.Transparency == 1 or childObject.Parent == nil then
+            if pc then
+                -- If on PC, simulate pressing the R key
+                simulateKeyPress(Enum.KeyCode.R)
+                print("Blade refill engaged")
+            else
+                -- If on mobile, simulate a touch event on the "Refill" button
+                local refillButton = player.PlayerGui.Interface.Mobile:FindFirstChild("Refill")
+                if refillButton then
+                    simulateTouchEvent(refillButton)
+                    print("Blade refill engaged")
+                end
+            end
+        end
     else
         print("Auto blade refill is not turned on")
     end
@@ -1799,3 +1830,10 @@ end
 
 -- Iniciar el hilo del auto-retry (activado por defecto)
 coroutine.wrap(autoRetryThread)()
+
+local lighting = game:GetService("Lighting") -- Obtener el servicio Lighting
+local atmosphere = lighting:FindFirstChildOfClass("Atmosphere") -- Buscar el objeto Atmosphere
+
+if atmosphere then
+    atmosphere:Destroy() -- Eliminar el objeto Atmosphere
+end
