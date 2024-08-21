@@ -41,6 +41,9 @@ local farm = Instance.new("Frame")
 local farmText = Instance.new("TextLabel")
 local tpButtonF = Instance.new("ImageButton")
 local warning = Instance.new("TextLabel")
+local tp = Instance.new("Frame")
+local tpText = Instance.new("TextLabel")
+local tpButtonT = Instance.new("ImageButton")
 local close = Instance.new("TextButton")
 local shadowButton = Instance.new("TextButton")
 local raidButton = Instance.new("TextButton")
@@ -99,6 +102,7 @@ combatframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
 combatframe.BorderSizePixel = 0
 combatframe.Position = UDim2.new(0.276640505, 0, 0.180000007, 0)
 combatframe.Size = UDim2.new(0.649999976, 0, 0.800000012, 0)
+combatframe.Visible = false
 combatframe.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
 combatframe.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
 
@@ -370,7 +374,6 @@ riskyframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
 riskyframe.BorderSizePixel = 0
 riskyframe.Position = UDim2.new(0.276640505, 0, 0.180000007, 0)
 riskyframe.Size = UDim2.new(0.649999976, 0, 0.800000012, 0)
-riskyframe.Visible = false
 riskyframe.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
 riskyframe.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
 
@@ -423,6 +426,40 @@ warning.TextScaled = true
 warning.TextSize = 14.000
 warning.TextStrokeTransparency = 0.480
 warning.TextWrapped = true
+
+tp.Name = "tp"
+tp.Parent = riskyframe
+tp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+tp.BackgroundTransparency = 1.000
+tp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+tp.BorderSizePixel = 0
+tp.Position = UDim2.new(0.0469999984, 0, 0.159999996, 0)
+tp.Size = UDim2.new(0.917999983, 0, 0.0700000003, 0)
+
+tpText.Name = "tpText"
+tpText.Parent = tp
+tpText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+tpText.BackgroundTransparency = 0.950
+tpText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+tpText.BorderSizePixel = 0
+tpText.Position = UDim2.new(0.0309665091, 0, 0.211424991, 0)
+tpText.Size = UDim2.new(0.600000024, 0, 0.761420369, 0)
+tpText.Font = Enum.Font.DenkOne
+tpText.Text = "Tp to Tank"
+tpText.TextColor3 = Color3.fromRGB(255, 255, 255)
+tpText.TextScaled = true
+tpText.TextSize = 28.000
+tpText.TextStrokeTransparency = 0.000
+tpText.TextWrapped = true
+
+tpButtonT.Name = "tpButtonT"
+tpButtonT.Parent = tp
+tpButtonT.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+tpButtonT.BorderColor3 = Color3.fromRGB(0, 0, 0)
+tpButtonT.BorderSizePixel = 0
+tpButtonT.Position = UDim2.new(0.776480734, 0, 0.30099383, 0)
+tpButtonT.Size = UDim2.new(0.131002203, 0, 0.575000167, 0)
+tpButtonT.ImageColor3 = Color3.fromRGB(0, 255, 0)
 
 close.Name = "close"
 close.Parent = main
@@ -1837,3 +1874,43 @@ local atmosphere = lighting:FindFirstChildOfClass("Atmosphere") -- Buscar el obj
 if atmosphere then
     atmosphere:Destroy() -- Eliminar el objeto Atmosphere
 end
+
+
+local tank = workspace.Unclimbable.Reloads:FindFirstChild("GasTanks"):FindFirstChild("GasTank").GasTank
+local function tpToTank()
+    local player = game:GetService("Players").LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local TweenService = game:GetService("TweenService")
+    local targetPosition = tank.Position
+
+    -- Tweening settings
+    local tweenInfo = TweenInfo.new(
+        3, -- Duration (4 seconds)
+        Enum.EasingStyle.Linear, -- Easing style
+        Enum.EasingDirection.Out, -- Easing direction
+        0, -- Repeat count (0 means it doesn't repeat)
+        false, -- Reverses (false means it doesn't reverse)
+        0 -- Delay time (no delay)
+    )
+
+    -- Define the target properties for the tween (we're changing the CFrame to move the player)
+    local tweenGoal = {}
+    tweenGoal.CFrame = CFrame.new(targetPosition)
+
+    -- Create the tween
+    local tween = TweenService:Create(humanoidRootPart, tweenInfo, tweenGoal)
+
+    -- Play the tween to move the player to the tank
+    tween:Play()
+
+    -- Optional: Wait for the tween to complete
+    tween.Completed:Wait()
+
+    -- Ensure the player's final position is at the target (in case of small rounding errors)
+    humanoidRootPart.CFrame = CFrame.new(targetPosition)
+end
+
+tpButtonT.Activated:Connect(function()
+    tpToTank()
+end)
