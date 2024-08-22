@@ -1650,166 +1650,176 @@ raidtoggle2.Activated:Connect(function()
 end)
 
 
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Workspace = game:GetService("Workspace")
-local VirtualInputManager = game:GetService("VirtualInputManager")
-local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
+-- Function to get the LocalPlayer's HumanoidRootPart location
+local function getLocalPlayerHumanoidRootPartLocation()
+    local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
-local HOVER_HEIGHT = 125
-local DESCEND_HEIGHT = 80
-local MOVE_DURATION = 1.5
-local DESCEND_DURATION = 0.15
-local CLICK_DISTANCE = 85
+    if humanoidRootPart and humanoidRootPart:IsA("BasePart") then
+        local humanoidRootPartLocation = humanoidRootPart.Position
+        print("HumanoidRootPart Location:", humanoidRootPartLocation)
+        return humanoidRootPartLocation
+    else
+        warn("HumanoidRootPart not found for LocalPlayer.")
+        return nil
+    end
+end
 
-local tank = Workspace.Unclimbable.Reloads.GasTanks:FindFirstChild("GasTank"):FindFirstChild("GasTank")
-local gasTankCFrame = tank.CFrame + Vector3.new(3, 15, 3)
-
-local isHovering = false
-local ScriptActive = false -- Activo por defecto
-
-local currentNape = nil
-local currentTitan = nil
-local humanoidRootPart = LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-
--- Función para encontrar la posición de nuca más cercana
 local function findClosestNapeLocation()
     local titansFolder = Workspace:FindFirstChild("Titans")
     local closestNapeLocation = nil
-    local closestTitan = nil
     local shortestDistance = math.huge
 
     if titansFolder then
-        local playerPosition = humanoidRootPart.Position
-
+        local playerPosition = getLocalPlayerHumanoidRootPartLocation()
         for _, model in ipairs(titansFolder:GetChildren()) do
-            if model:IsA("Model") then
-                local humanoid = model:FindFirstChildOfClass("Humanoid")
-                if humanoid then
-                    local hitBoxes = model:FindFirstChild("Hitboxes")
-                    if hitBoxes then
-                        local hit = hitBoxes:FindFirstChild("Hit")
-                        if hit then
-                            local napePart = hit:FindFirstChild("Nape")
-                            if napePart then
-                                local distance = (napePart.Position - playerPosition).Magnitude
-                                if distance < shortestDistance then
-                                    shortestDistance = distance
-                                    closestNapeLocation = napePart
-                                    closestTitan = model
-                                end
+            if model:IsA("Model") and model:FindFirstChildOfClass("Humanoid") then
+                local hitBoxes = model:FindFirstChild("Hitboxes")
+                if hitBoxes then
+                    local hit = hitBoxes:FindFirstChild("Hit")
+                    if hit then
+                        local napePart = hit:FindFirstChild("Nape")
+                        if napePart then
+                            local distance = (napePart.Position - playerPosition).Magnitude
+                            if distance < shortestDistance and distance <= MAX_TELEPORT_DISTANCE2 then
+                                shortestDistance = distance
+                                closestNapeLocation = napePart
                             end
                         end
                     end
                 end
             end
         end
-    end
-
-    return closestNapeLocation, closestTitan
-end
-
--- Función para mover el HumanoidRootPart usando lerping
-local function moveToPositionLerp(targetCFrame, duration)
-    local startCFrame = humanoidRootPart.CFrame
-    local elapsedTime = 0
-
-    while elapsedTime < duration do
-        elapsedTime = elapsedTime + RunService.RenderStepped:Wait()
-        local alpha = elapsedTime / duration
-        humanoidRootPart.CFrame = startCFrame:Lerp(targetCFrame, alpha)
-    end
-    humanoidRootPart.CFrame = targetCFrame
-end
-
--- Función para realizar el ciclo de hover y descenso
-local function performHoverCycle()
-    while ScriptActive and isTeleportEnabled do
-        if isHovering then
-            currentNape, currentTitan = findClosestNapeLocation()
-            if currentNape and currentTitan and currentTitan:FindFirstChildOfClass("Humanoid") then
-                moveToPositionLerp(currentNape.CFrame + Vector3.new(0, HOVER_HEIGHT, 0), MOVE_DURATION)
-                moveToPositionLerp(currentNape.CFrame + Vector3.new(0, DESCEND_HEIGHT, 0), MOVE_DURATION)
-                wait(DESCEND_DURATION)
-                moveToPositionLerp(currentNape.CFrame + Vector3.new(0, HOVER_HEIGHT, 0), MOVE_DURATION)
-            else
-                moveToPositionLerp(gasTankCFrame, MOVE_DURATION)
-                wait(1.5)
-                VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.R, false, game)
-                VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.R, false, game)
-                wait(1.5)
-            end
-        else
-            wait(0.1)
-        end
-    end
-end
-
--- Función para presionar teclas aleatorias
-local function randomKeyPress()
-    local keys = {Enum.KeyCode.Q, Enum.KeyCode.E, Enum.KeyCode.Space}
-    
-    while ScriptActive and isTeleportEnabled do
-        local randomKey = keys[math.random(1, #keys)]
-        VirtualInputManager:SendKeyEvent(true, randomKey, false, game)
-        wait(1)
-        VirtualInputManager:SendKeyEvent(false, randomKey, false, game)
-        wait(1.5)
-    end
-end
-
-coroutine.wrap(randomKeyPress)()
-
--- Función para realizar un clic solo cuando esté dentro de 75 unidades de la nuca
-local function performClick()
-    if ScriptActive and currentNape and isTeleportEnabled then
-        local distance = (humanoidRootPart.Position - currentNape.Position).Magnitude
-
-        if distance <= CLICK_DISTANCE then
-            VirtualInputManager:SendMouseButtonEvent(512, 384, 0, true, game, 0)
-            wait(0.1)
-            VirtualInputManager:SendMouseButtonEvent(512, 384, 0, false, game, 0)
-        end
-    end
-end
-
-coroutine.wrap(function()
-    while ScriptActive and isTeleportEnabled do
-        performClick()
-        wait(0.1)
-    end
-end)()
-
--- Función para desactivar todas las colisiones
-local function disableAllCollisions()
-    if Workspace:FindFirstChild("Climbable") then
-        setCanCollideFalse(Workspace.Climbable)
-    end
-    if Workspace:FindFirstChild("Spawns") then
-        setCanCollideFalse(Workspace.Spawns)
-    end
-    if Workspace:FindFirstChild("Unclimbable") then
-        setCanCollideFalse(Workspace.Unclimbable)
-    end
-end
-
-
-
-local function toggleFarm()
-    ScriptActive = not ScriptActive
-    if ScriptActive then
-        print("Script activado")
-        disableAllCollisions()
     else
-        print("Script desactivado")
+        warn("Titans folder not found in Workspace.")
+    end
+
+    if closestNapeLocation then
+        nape = closestNapeLocation
+        print("Closest NapeLocation set to:", nape.Position)
+    else
+        warn("No Nape part found within maximum teleport distance.")
+    end
+
+    return nape
+end
+
+
+
+
+-- Function to start hovering above the Nape
+local function startHoveringAboveNape()
+    if nape then
+        local humanoidRootPart = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            local bodyPosition = Instance.new("BodyPosition")
+            bodyPosition.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+            bodyPosition.Position = nape.Position + Vector3.new(0, 450, 0)
+            bodyPosition.Parent = humanoidRootPart
+
+            local bodyGyro = Instance.new("BodyGyro")
+            bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+            bodyGyro.CFrame = humanoidRootPart.CFrame
+            bodyGyro.Parent = humanoidRootPart
+
+            return bodyPosition, bodyGyro
+        end
+    else
+        warn("Nape not found.")
+        return nil, nil
     end
 end
 
-tpButtonF.Activated:Connect(function()
-    toggleFarm()
+-- Function to stop hovering
+local function stopHovering(bodyPosition, bodyGyro)
+    if bodyPosition then
+        bodyPosition:Destroy()
+    end
+    if bodyGyro then
+        bodyGyro:Destroy()
+    end
+end
+
+-- Function to perform consecutive teleports upon releasing the left mouse button
+local function performConsecutiveTeleports()
+    local humanoidRootPart = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        local originalPosition = humanoidRootPart.Position
+
+        local function teleportTo(position)
+            humanoidRootPart.CFrame = CFrame.new(position)
+        end
+
+        local function teleport()
+            findClosestNapeLocation() -- Update NapeLocation
+            if nape then
+                local napePosition = nape.Position
+                local quarterDistance = (napePosition - originalPosition) / 4
+                local threeQuarterDistance = quarterDistance * 3
+
+                for i = 1, 2 do
+                    teleportTo(originalPosition + threeQuarterDistance)
+                    wait(0.001)
+                    teleportTo(napePosition)
+                    teleportTo(napePosition)
+                    teleportTo(napePosition)
+					teleportTo(napePosition)
+                end
+            end
+        end
+
+        teleport()
+    end
+end
+
+-- Function to handle toggling teleportation
+local function toggleTeleportation()
+    tpButtonF.BackgroundColor3 = isTeleportEnabled and Color3.new(0, 1, 0) or Color3.fromRGB(170, 0, 0)
+    if isTeleportEnabled then
+        print("Teleportation Enabled")
+        findClosestNapeLocation()
+        local bodyPosition, bodyGyro = startHoveringAboveNape()
+        
+        -- Keep hovering while teleportation is enabled
+        spawn(function()
+            while isTeleportEnabled do
+                wait(1) -- Cooldown
+                VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
+                wait(0.3)
+                VirtualInputManager:SendMouseButtonEvent(0, 0, 0, false, game, 0)
+                findClosestNapeLocation()
+                if bodyPosition and bodyGyro then
+                    bodyPosition.Position = nape.Position + Vector3.new(0, 300, 0)
+                    bodyGyro.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+                end
+            end
+            stopHovering(bodyPosition, bodyGyro)
+        end)
+    else
+        print("Teleportation Disabled")
+    end
+end
+
+if isTeleportEnabled then
+    toggleTeleportation()
+    tpButtonF.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+else
+    tpButtonF.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+end
+
+-- Toggle teleportation when button is clicked
+tpButtonF.MouseButton1Click:Connect(function()
+    isTeleportEnabled = not isTeleportEnabled
+    toggleTeleportation()
 end)
 
+
+-- Connect the function to the UserInputService's InputEnded event
+    UserInputService.InputEnded:Connect(function(input)
+        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and isTeleportEnabled == true then
+            performConsecutiveTeleports()
+        end
+    end)
 
 
 local retryButtonTitle = player.PlayerGui.Interface.Rewards.Main.Info.Main.Buttons.Retry.Title
