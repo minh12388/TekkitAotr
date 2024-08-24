@@ -1872,7 +1872,7 @@ local lighting = game:GetService("Lighting") -- Obtener el servicio Lighting
 local atmosphere = lighting:FindFirstChildOfClass("Atmosphere") -- Buscar el objeto Atmosphere
 
 if atmosphere then
-    atmosphere.Density = 0.25 -- Eliminar el objeto Atmosphere
+    atmosphere.Density = 0.22 -- Eliminar el objeto Atmosphere
 end
 
 
