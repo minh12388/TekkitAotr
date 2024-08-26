@@ -1,3 +1,4 @@
+-- Ensure the game is loaded
 if game:IsLoaded() then
     print("Game is already loaded, executing script.")
 else
@@ -6,42 +7,50 @@ end
 
 local GameP = game.PlaceId
 
-game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Notification", 
-    Text = "Checking", 
-    Icon = "rbxassetid://13264701341" 
-})
-wait(0.1)
-game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Notification", 
-    Text = "Check Place Id..", 
-    Icon = "rbxassetid://13264701341"
-})
-wait(0.1)
-
-if game.PlaceId == 12137249458 then  -- gun grounds
+-- Function to send notifications
+local function sendNotification(title, text)
     game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Notification", 
-        Text = "Game Support " .. "[" .. GameP .. "]", 
+        Title = title,
+        Text = text,
         Icon = "rbxassetid://13264701341"
     })
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/gungroundsffa"))()
+end
+
+-- Initial notifications
+sendNotification("Notification", "Checking")
+wait(0.1)
+sendNotification("Notification", "Check Place Id..")
+wait(0.1)
+
+-- Game specific logic
+local url
+
+if game.PlaceId == 12137249458 then  -- Gun Grounds
+    sendNotification("Notification", "Game Support [" .. GameP .. "]")
+    url = "https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/gungroundsffa"
 
 elseif game.PlaceId == 5094651510 or game.PlaceId == 4855457388 then  -- Demon Fall HUB and new place
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Notification", 
-        Text = "Game Support " .. "[" .. GameP .. "]", 
-        Icon = "rbxassetid://13264701341"
-    })
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/JD-04/Tekkit/main/Demon%20Fall"))()
+    sendNotification("Notification", "Game Support [" .. GameP .. "]")
+    url = "https://raw.githubusercontent.com/JD-04/Tekkit/main/Demon%20Fall"
 
 -- Add other games here as needed
 
 else
-game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Notification", 
-    Text = "Loading Aot:R Hub" .. "[" .. GameP .. "]", 
-    Icon = "rbxassetid://13264701341"
-})
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/Tekkit%20Hub"))()
+    sendNotification("Notification", "Loading Aot:R Hub [" .. GameP .. "]")
+    url = "https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/Tekkit%20Hub"
+end
+
+-- Load and execute the script from the URL
+if url then
+    local success, response = pcall(function()
+        return game:HttpGet(url)
+    end)
+
+    if success then
+        loadstring(response)()
+    else
+        sendNotification("Error", "Failed to load script from URL: " .. url)
+    end
+else
+    sendNotification("Error", "No URL found for the current game.")
 end
