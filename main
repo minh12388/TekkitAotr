@@ -28,7 +28,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JD-04/Tekkit/main/Demon%20Fall"))()
 wait(0.1)
 
-if game.PlaceId == 12137249458 then --Gun Grounds FFA
+elseif game.PlaceId == 12137249458 then --Gun Grounds FFA
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "Notification", 
     Text = "Game Support " .. "[" .. GameP .. "]", 
