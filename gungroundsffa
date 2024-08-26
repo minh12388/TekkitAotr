@@ -44,7 +44,7 @@ local function aimAtTarget(target)
         local newCFrame = CFrame.new(Camera.CFrame.Position, Camera.CFrame.Position + direction)
 
         -- Smooth aim towards the target
-        Camera.CFrame = Camera.CFrame:Lerp(newCFrame, smoothness)
+        Camera.CFrame = Camera.CFrame:Lerp(newCFrame, smoothness/0.1)
     end
 end
 
@@ -53,7 +53,7 @@ local function createAimbotGUI()
     --Properties:
 
     tekkit.Name = "tekkit"
-    tekkit.Parent = game.Players.LocalPlayer.PlayerGui
+    tekkit.Parent = game.CoreGui
     tekkit.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     tekkit.ResetOnSpawn = false
 
@@ -258,3 +258,10 @@ for _, child in pairs(Workspace:GetChildren()) do
         checkAndHighlightModel(child)
     end
 end
+
+UserInputService.InputEnded:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.RightShift then
+        tekkit.Enabled = not tekkit.Enabled
+		print("Gui toggled")
+    end
+end)
