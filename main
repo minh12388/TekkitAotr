@@ -19,23 +19,23 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 })
 wait(0.1)
 
-if game.PlaceId == 5094651510 then --DemonFall
-game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Notification", 
-    Text = "Game Support " .. "[" .. GameP .. "]", 
-    Icon = "rbxassetid://13264701341"
-})
-loadstring(game:HttpGet("https://raw.githubusercontent.com/JD-04/Tekkit/main/Demon%20Fall"))()
-wait(0.1)
+if game.PlaceId == 12137249458 then  -- gun grounds
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Notification", 
+        Text = "Game Support " .. "[" .. GameP .. "]", 
+        Icon = "rbxassetid://13264701341"
+    })
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/gungroundsffa"))()
 
-elseif game.PlaceId == 12137249458 then --Gun Grounds FFA
-game:GetService("StarterGui"):SetCore("SendNotification",{
-    Title = "Notification", 
-    Text = "Game Support " .. "[" .. GameP .. "]", 
-    Icon = "rbxassetid://13264701341"
-})
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/gungroundsffa"))()
-wait(0.1)
+elseif game.PlaceId == 5094651510 or game.PlaceId == 4855457388 then  -- Demon Fall HUB and new place
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Notification", 
+        Text = "Game Support " .. "[" .. GameP .. "]", 
+        Icon = "rbxassetid://13264701341"
+    })
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/JD-04/Tekkit/main/Demon%20Fall"))()
+
+-- Add other games here as needed
 
 else
 game:GetService("StarterGui"):SetCore("SendNotification",{
