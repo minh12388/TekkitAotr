@@ -26,6 +26,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
     Icon = "rbxassetid://13264701341"
 })
 loadstring(game:HttpGet("https://raw.githubusercontent.com/JD-04/Tekkit/main/Demon%20Fall"))()
+wait(0.1)
 
 if game.PlaceId == 12137249458 then --Gun Grounds FFA
 game:GetService("StarterGui"):SetCore("SendNotification",{
@@ -34,6 +35,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
     Icon = "rbxassetid://13264701341"
 })
 loadstring(game:HttpGet("https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/gungroundsffa"))()
+wait(0.1)
 
 else
 game:GetService("StarterGui"):SetCore("SendNotification",{
