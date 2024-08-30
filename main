@@ -33,7 +33,7 @@ elseif game.PlaceId == 5094651510 or game.PlaceId == 4855457388 then  -- Demon F
     sendNotification("Notification", "Game Support [" .. GameP .. "]")
     url = "https://raw.githubusercontent.com/JD-04/Tekkit/main/Demon%20Fall"
 
-elseif game.PlaceId == 13772394625 or game.PlaceId == 16281300371  then  -- BladeBall
+elseif game.PlaceId == 13772394625 or game.PlaceId == 16281300371 or game.PlaceId == 15144787112  then  -- BladeBall
     sendNotification("Notification", "Game Support [" .. GameP .. "]")
     url = "https://raw.githubusercontent.com/JD-04/Tekkit/main/BladeBall"
 
