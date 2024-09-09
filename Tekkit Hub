@@ -102,7 +102,7 @@ combatframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
 combatframe.BorderSizePixel = 0
 combatframe.Position = UDim2.new(0.276640505, 0, 0.180000007, 0)
 combatframe.Size = UDim2.new(0.649999976, 0, 0.800000012, 0)
-combatframe.Visible = false
+combatframe.Visible = true
 combatframe.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
 combatframe.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
 
@@ -368,6 +368,7 @@ familyButton.TextWrapped = true
 riskyframe.Name = "riskyframe"
 riskyframe.Parent = main
 riskyframe.Active = true
+riskyframe.Visible = false
 riskyframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 riskyframe.BackgroundTransparency = 1.000
 riskyframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
