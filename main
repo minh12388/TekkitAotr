@@ -36,12 +36,14 @@ elseif game.PlaceId == 5094651510 or game.PlaceId == 4855457388 then  -- Demon F
 elseif game.PlaceId == 13772394625 or game.PlaceId == 16281300371 or game.PlaceId == 15144787112 or game.PlaceId == 16581648071 or game.PlaceId == 15234596844 or game.PlaceId == 14915220621 or game.PlaceId == 15264892126 then  -- BladeBall
     sendNotification("Notification", "Game Support [" .. GameP .. "]")
     url = "https://raw.githubusercontent.com/JD-04/Tekkit/main/BladeBall"
-
+elseif game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then
+    sendNotification("Notification", "Game Support [" .. GameP .. "]")
+    url = "https://raw.githubusercontent.com/JD-04/Tekkit/refs/heads/main/Blox%20obf.txt"
 -- Add other games here as needed
 
 else
     sendNotification("Notification", "Loading Aot:R Hub [" .. GameP .. "]")
-    url = "https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/Tekkit%20Hub"
+    url = "https://raw.githubusercontent.com/zerunquist/TekkitAotr/refs/heads/main/rewrite"
 end
 
 -- Load and execute the script from the URL
