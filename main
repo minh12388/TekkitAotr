@@ -26,23 +26,23 @@ wait(0.1)
 local url
 
 if game.PlaceId == 12137249458 then  -- Gun Grounds
-    sendNotification("Notification", "Game Support [" .. GameP .. "]")
+    sendNotification("Notification", "Gun Grounds [" .. GameP .. "]")
     url = "https://raw.githubusercontent.com/zerunquist/TekkitAotr/main/gungroundsffa"
 
-elseif game.PlaceId == 5094651510 or game.PlaceId == 4855457388 then  -- Demon Fall HUB and new place
-    sendNotification("Notification", "Game Support [" .. GameP .. "]")
+elseif game.PlaceId == 5094651510 or game.PlaceId == 4855457388 then 
+    sendNotification("Notification", "Demon Fall [" .. GameP .. "]")
     url = "https://raw.githubusercontent.com/JD-04/Tekkit/main/Demon%20Fall"
 
 elseif game.PlaceId == 13772394625 or game.PlaceId == 16281300371 or game.PlaceId == 15144787112 or game.PlaceId == 16581648071 or game.PlaceId == 15234596844 or game.PlaceId == 14915220621 or game.PlaceId == 15264892126 then  -- BladeBall
-    sendNotification("Notification", "Game Support [" .. GameP .. "]")
+    sendNotification("Notification", "Blade Ball [" .. GameP .. "]")
     url = "https://raw.githubusercontent.com/JD-04/Tekkit/main/BladeBall"
 
 elseif game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then
-    sendNotification("Notification", "Game Support [" .. GameP .. "]")
+    sendNotification("Notification", "Blox Fruits [" .. GameP .. "]")
     url = "https://raw.githubusercontent.com/JD-04/Tekkit/refs/heads/main/Blox%20obf.txt"
 
 elseif game.PlaceId == 286090429 then
-    sendNotification("Notification", "Game Support [" .. GameP .. "]")
+    sendNotification("Notification", "Arsenal [" .. GameP .. "]")
     url = "https://raw.githubusercontent.com/JD-04/Tekkit/refs/heads/main/Arsenal"
 -- Add other games here as needed
 
