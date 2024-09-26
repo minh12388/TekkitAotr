@@ -40,6 +40,10 @@ elseif game.PlaceId == 13772394625 or game.PlaceId == 16281300371 or game.PlaceI
 elseif game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then
     sendNotification("Notification", "Game Support [" .. GameP .. "]")
     url = "https://raw.githubusercontent.com/JD-04/Tekkit/refs/heads/main/Blox%20obf.txt"
+
+elseif game.PlaceId == 286090429 then
+    sendNotification("Notification", "Game Support [" .. GameP .. "]")
+    url = "https://raw.githubusercontent.com/JD-04/Tekkit/refs/heads/main/Arsenal"
 -- Add other games here as needed
 
 else
