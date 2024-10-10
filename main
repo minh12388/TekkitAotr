@@ -48,7 +48,7 @@ elseif game.PlaceId == 286090429 then
 
 else
     sendNotification("Notification", "Loading Aot:R Hub [" .. GameP .. "]")
-    url = "https://raw.githubusercontent.com/zerunquist/TekkitAotr/refs/heads/main/rewrite"
+    url = "https://raw.githubusercontent.com/zerunquist/h/refs/heads/main/h"
 end
 
 -- Load and execute the script from the URL
