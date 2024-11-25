@@ -1,0 +1,53 @@
+if game:IsLoaded() then
+    print("Continuing - 1")
+else
+    game.Loaded:Wait()
+end
+while task.wait(0.1) do
+    if not pcall(function() return game.Players.LocalPlayer.Character.Main.W end) then
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Not in mission",
+            Text = "Player not found, join a mission.",
+        })
+    else
+        print("Continuing - 2")
+        break
+    end
+end
+
+while task.wait(0.1) do
+    if not pcall(function() return game.Workspace.Titans:FindFirstChildOfClass("Model").Hitboxes.Hit end) then
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Not in mission",
+            Text = "Titans not found, join a mission.",
+        })
+    else
+        print("Continuing - 3")
+        break
+    end
+end
+
+
+
+local v = {
+    player = game.Players.LocalPlayer,
+    char = game.Players.LocalPlayer.Character,
+    humanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"),
+    root = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"),
+    playerName = game.Players.LocalPlayer.Name,
+    titans = game.Workspace:FindFirstChild("Titans"),
+    GET = game.ReplicatedStorage.Assets.Remotes.GET,
+    POST = game.ReplicatedStorage.Assets.Remotes.POST,
+    UIP = game:GetService("UserInputService"),
+    VIP = game:GetService("VirtualInputManager"),
+    
+}
+
+
+local BP = v.root:FindFirstChild("BodyPosition") or Instance.new("BodyPosition", v.root)
+BP.MaxForce = Vector3.new(0, 1000, 0)
+BP.D = 1000
+BP.P = 1000
+BP.Name = "BP"
+v.root.Position = v.root.Position + Vector3.new(0, 2.5, 0)
+BP.Position = Vector3.new(v.root.Position.X, v.root.Position.Y + 350, v.root.Position.Z)
