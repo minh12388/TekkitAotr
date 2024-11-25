@@ -50,4 +50,4 @@ BP.D = 1000
 BP.P = 1000
 BP.Name = "BP"
 v.root.Position = v.root.Position + Vector3.new(0, 2.5, 0)
-BP.Position = Vector3.new(v.root.Position.X, v.root.Position.Y + 350, v.root.Position.Z)
+BP.Position = Vector3.new(v.root.Position.X, v.root.Position.Y + 225, v.root.Position.Z)
