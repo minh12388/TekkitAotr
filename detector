@@ -11,9 +11,6 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 })
 if id == 16732694052 then -- fisch
 	loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/b451bfc32916b86d9dea7b40672e7da3.lua"))()
-	break
 else
 	loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/d99eeb73242d36b0c858a9615f7c8167.lua"))()
-	break
 end
-
