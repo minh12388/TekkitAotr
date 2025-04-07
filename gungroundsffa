@@ -73,7 +73,7 @@ local function createAimbotGUI()
     Title.Position = UDim2.new(-0.000875323312, 0, 0, 0)
     Title.Size = UDim2.new(0, 293, 0, 50)
     Title.Font = Enum.Font.SourceSans
-    Title.Text = "Tekkit Hub"
+    Title.Text = "Minh Dubaii"
     Title.TextColor3 = Color3.fromRGB(255, 255, 255)
     Title.TextScaled = true
     Title.TextSize = 14.000
@@ -216,7 +216,6 @@ UserInputService.InputEnded:Connect(function(input)
 end)
 
 print("Aimbot with GUI Initialized")
-
 
 
 
