@@ -52,7 +52,7 @@ end
 local function createAimbotGUI()
     --Properties:
 
-    tekkit.Name = "tekkit"
+    tekkit.Name = "MinhDubaii"
     tekkit.Parent = game.CoreGui
     tekkit.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     tekkit.ResetOnSpawn = false
